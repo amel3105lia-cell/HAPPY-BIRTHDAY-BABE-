@@ -10,6 +10,36 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 
+<script>
+const music = document.getElementById("music");
+
+let scrollInterval;
+let hasFinishedScrolling = false;
+
+music.addEventListener("play", function(){
+
+    // Kalau sudah pernah selesai scroll, jangan ulang lagi
+    if (hasFinishedScrolling) return;
+
+    scrollInterval = setInterval(() => {
+
+        window.scrollBy(0, 1);
+
+        // Jika sudah sampai bawah
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+            clearInterval(scrollInterval);
+            hasFinishedScrolling = true; // tandai sudah selesai
+        }
+
+    }, 40); // semakin besar angkanya, semakin pelan
+
+});
+
+music.addEventListener("pause", function(){
+    clearInterval(scrollInterval);
+});
+</script>
+    
 body{
     min-height:100vh;
     padding:40px 20px;
