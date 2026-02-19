@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ucapan Untukmu 💌</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:40px 20px;
+    font-family:'Playfair Display', serif;
+    color:white;
+    background: linear-gradient(-45deg,#ff9a9e,#fbc2eb,#fad0c4,#a6c1ee);
+    background-size:400% 400%;
+    animation:bgMove 12s ease infinite;
+}
+
+@keyframes bgMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+h1{
+    font-family:'Great Vibes', cursive;
+    font-size:60px;
+    margin-bottom:30px;
+    animation:fadeDown 2s ease;
+    text-shadow:0 0 20px rgba(255,255,255,0.9);
+}
+
+p{
+    max-width:750px;
+    font-size:20px;
+    line-height:1.9;
+    animation:fadeUp 3s ease;
+    margin-bottom:30px;
+}
+
+@keyframes fadeDown{
+    from{opacity:0; transform:translateY(-30px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+@keyframes fadeUp{
+    from{opacity:0; transform:translateY(30px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+/* Sparkle background */
+.sparkle{
+    position:absolute;
+    width:4px;
+    height:4px;
+    background:white;
+    border-radius:50%;
+    animation:twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle{
+    from{opacity:0.3;}
+    to{opacity:1;}
+}
+
+/* Navigation Buttons */
+.nav-container{
+    margin-top:40px;
+    display:flex;
+    gap:30px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.btn-shine{
+    position:relative;
+    display:inline-block;
+    padding:14px 35px;
+    border-radius:40px;
+    text-decoration:none;
+    font-weight:600;
+    font-size:16px;
+    color:white;
+    background:linear-gradient(45deg,#ff6f91,#ff8fab,#ffc2d1);
+    overflow:hidden;
+    transition:0.4s;
+    box-shadow:0 8px 20px rgba(214,51,132,0.4);
+    animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%{transform:translateY(0px);}
+    50%{transform:translateY(-6px);}
+    100%{transform:translateY(0px);}
+}
+
+.btn-shine::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:100%;
+    height:100%;
+    background:linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,0.6),
+        transparent
+    );
+    transition:0.6s;
+}
+
+.btn-shine:hover::before{
+    left:100%;
+}
+
+.btn-shine:hover{
+    transform:scale(1.05);
+    box-shadow:0 12px 30px rgba(214,51,132,0.6);
+}
+</style>
+</head>
+
+<body>
+
+<h1>Untukmu 💖</h1>
+
+<p>
+    Di usia barumu ini, aku berharap setiap langkahmu selalu dipenuhi kebahagiaan.  
+    Semoga semua mimpi yang kamu simpan dalam hati satu per satu menjadi nyata.  
+    <br><br>
+    Terima kasih sudah berjuang, berusaha, dan bersabar hingga saat ini. I see semuanya ga mudah untuk dirimu berada dititik ini, so I am proud of you babe!
+    <br><br>
+    Doa baik untukmu selalu💕
+</p>
+
+<div class="nav-container">
+    <a href="halaman2.html" class="btn-shine">⬅ Kembali</a>
+    <a href="halaman4.html" class="btn-shine">Lanjut ➡</a>
+</div>
+
+<script>
+for(let i=0;i<40;i++){
+    let sparkle=document.createElement("div");
+    sparkle.className="sparkle";
+    sparkle.style.top=Math.random()*100+"vh";
+    sparkle.style.left=Math.random()*100+"vw";
+    sparkle.style.animationDuration=(1+Math.random()*3)+"s";
+    document.body.appendChild(sparkle);
+}
+</script>
+
+</body>
+</html>
