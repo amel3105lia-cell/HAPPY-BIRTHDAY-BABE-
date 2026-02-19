@@ -167,45 +167,47 @@ h1{
 </head>
 
 <script>
-const music = document.getElementById("music");
+let hasScrolled = false;
 
-let scrollInterval;
-let hasFinishedScrolling = false;
+function startMusic(){
+    const music = document.getElementById("music");
+    music.play();
 
-music.addEventListener("play", function(){
+    if(hasScrolled) return;
 
-    // Kalau sudah pernah selesai scroll, jangan ulang lagi
-    if (hasFinishedScrolling) return;
-
-    scrollInterval = setInterval(() => {
+    let scrollInterval = setInterval(function(){
 
         window.scrollBy(0, 1);
 
-        // Jika sudah sampai bawah
-        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+        if(window.innerHeight + window.scrollY >= document.body.scrollHeight - 2){
             clearInterval(scrollInterval);
-            hasFinishedScrolling = true; // tandai sudah selesai
+            hasScrolled = true;
         }
 
-    }, 40); // semakin besar angkanya, semakin pelan
-
-});
-
-music.addEventListener("pause", function(){
-    clearInterval(scrollInterval);
-});
+    }, 20);
+}
 </script>
-
-    
+  
 <body>
 
 <h1>Our photos💕</h1>
 
 <!-- Musik -->
-<audio id="music" controls>
+<audio id="music">
     <source src="Sampai Akhir Nanti.mp3" type="audio/mpeg">
 </audio>
-
+<button onclick="startMusic()" style="
+padding:12px 30px;
+border-radius:30px;
+border:none;
+background:#ff6f91;
+color:white;
+font-size:16px;
+cursor:pointer;
+box-shadow:0 8px 20px rgba(0,0,0,0.3);
+">
+💖 Putar Musik
+</button>
 
 <br><br>
 
