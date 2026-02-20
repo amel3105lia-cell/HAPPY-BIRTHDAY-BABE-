@@ -43,6 +43,42 @@ h1{
     margin:auto;
 }
 
+.polaroid {
+    position: relative;
+    display: inline-block;
+    padding: 25px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    margin: 40px;
+}
+
+.emoji-frame {
+    position: absolute;
+    inset: -30px;
+    pointer-events: none;
+    font-size: 22px;
+    text-align: center;
+}
+
+.emoji-top, .emoji-bottom {
+    position: absolute;
+    width: 100%;
+}
+
+.emoji-top { top: 0; }
+.emoji-bottom { bottom: 0; }
+
+.emoji-left, .emoji-right {
+    position: absolute;
+    height: 100%;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+}
+
+.emoji-left { left: 0; }
+.emoji-right { right: 0; }
+
 /* Polaroid */
 .polaroid{
     position:relative;
@@ -212,9 +248,15 @@ box-shadow:0 8px 20px rgba(0,0,0,0.3);
 <br><br>
 
 <div class="gallery">
-
+    <div class="polaroid">
+    <div class="emoji-frame">
+        <div class="emoji-top">🌸 🌸 🌸 🌸 🌸 🌸</div>
+        <div class="emoji-bottom">🌸 🌸 🌸 🌸 🌸 🌸</div>
+        <div class="emoji-left">🌸 🌸 🌸 🌸</div>
+        <div class="emoji-right">🌸 🌸 🌸 🌸</div>
+    </div>
     <div class="polaroid" onclick="openLightbox(this)">
-    <img src="ft1.jpg">
+    <img src="ft1.jpg" style="width:100%; border-radius:15px;">
     <p>Our First Smile 💖</p>
 </div>
 
