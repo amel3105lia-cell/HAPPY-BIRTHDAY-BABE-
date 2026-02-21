@@ -198,6 +198,15 @@ button:hover{
     <audio id="bgMusic" loop>
     <source src="Sampai Akhir Waktu.mp3" type="audio/mpeg">
 </audio>
+
+    <script>
+function startMusic(){
+    const music = document.getElementById("bgMusic");
+    music.play();
+    localStorage.setItem("musicPlaying", "true");
+}
+</script>
+    
 // Love jatuh
 for(let i=0;i<25;i++){
     let heart=document.createElement("div");
