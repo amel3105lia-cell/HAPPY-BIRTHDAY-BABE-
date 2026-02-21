@@ -189,16 +189,19 @@ button:hover{
         Semoga setiap langkahmu dipenuhi cahaya, cinta, dan kebahagiaan tanpa akhir.
     </p>
     <div class="nav-container">
-    <span></span>
-   <a href="halaman2.html" class="btn-shine" onclick="startMusic()">Lanjut ➡</a>
+        <span></span>
+        <!-- tombol diubah -->
+        <a href="#" class="btn-shine" onclick="startMusic(event)">Lanjut ➡</a>
+    </div>
 </div>
-</div>
+
 <!-- AUDIO -->
-<audio id="bgMusic" loop>
-    <source src="Sampai Akhir Nanti.mp3" type="audio/mpeg">
+<audio id="bgMusic" loop preload="auto">
+    <source src="sampai-akhir-nanti.mp3" type="audio/mpeg">
 </audio>
 
 <script>
+
 // Love jatuh
 for(let i=0;i<25;i++){
     let heart=document.createElement("div");
@@ -211,22 +214,38 @@ for(let i=0;i<25;i++){
 }
 
 // Sparkle
-for(let i=0;i<50;i++){
+for(let i=0;i<15;i++){
     let sparkle=document.createElement("div");
     sparkle.className="sparkle";
+    sparkle.innerHTML="✨";
     sparkle.style.top=Math.random()*100+"vh";
     sparkle.style.left=Math.random()*100+"vw";
     sparkle.style.animationDuration=(1+Math.random()*3)+"s";
     document.body.appendChild(sparkle);
 }
 
-// MULAI MUSIK
-function startMusic(){
-    const music = document.getElementById("bgMusic");
-    music.play();
-    localStorage.setItem("musicPlaying", "true");
-}
-</script>
 
+// =======================
+// MULAI MUSIK + PINDAH
+// =======================
+function startMusic(event){
+    event.preventDefault(); // hentikan pindah dulu
+
+    const music = document.getElementById("bgMusic");
+
+    music.play().then(()=>{
+        localStorage.setItem("musicPlaying","true");
+
+        // kasih jeda sedikit biar stabil
+        setTimeout(()=>{
+            window.location.href="halaman2.html";
+        },500);
+
+    }).catch(()=>{
+        alert("Klik sekali lagi untuk mengaktifkan musik 🎵");
+    });
+}
+
+</script>
 </body>
 </html>
