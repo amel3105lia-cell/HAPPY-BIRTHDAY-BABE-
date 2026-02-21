@@ -190,11 +190,14 @@ button:hover{
     </p>
     <div class="nav-container">
     <span></span>
-    <a href="halaman2.html" class="btn-shine">Lanjut ➡</a>
+   <a href="halaman2.html" class="btn-shine" onclick="startMusic()">Lanjut ➡</a>
 </div>
 </div>
 
 <script>
+    <audio id="bgMusic" loop>
+    <source src="musik-romantis.mp3" type="audio/mpeg">
+</audio>
 // Love jatuh
 for(let i=0;i<25;i++){
     let heart=document.createElement("div");
