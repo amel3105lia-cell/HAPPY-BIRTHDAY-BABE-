@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Halaman 7 - Surprise</title>
+
+<style>
+body{
+  margin:0;
+  height:100vh;
+  overflow:hidden;
+  font-family:'Segoe UI', sans-serif;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  background:linear-gradient(-45deg,#ffd6e7,#fff0f5,#ffe4ec,#fff5f8);
+  background-size:400% 400%;
+  animation:bgMove 12s ease infinite;
+}
+
+@keyframes bgMove{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+.gift{
+  font-size:100px;
+  cursor:pointer;
+  transition:1s;
+  z-index:2;
+}
+
+.hide{
+  opacity:0;
+  transform:scale(0.5);
+}
+
+.message{
+  position:absolute;
+  text-align:center;
+  font-size:24px;
+  color:#c2185b;
+  width:80%;
+  min-height:80px;
+  z-index:2;
+}
+
+.glow{
+  position:absolute;
+  width:350px;
+  height:350px;
+  background:radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 70%);
+  opacity:0;
+  transition:1.5s;
+}
+
+.light-on{
+  opacity:1;
+}
+
+/* HEART ANIMATION */
+.heart{
+  position:absolute;
+  color:#ff4d6d;
+  font-size:20px;
+  animation:fall linear infinite;
+  opacity:0.8;
+}
+
+@keyframes fall{
+  0%{
+    transform:translateY(-50px);
+    opacity:0;
+  }
+  10%{opacity:1;}
+  100%{
+    transform:translateY(100vh);
+    opacity:0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="glow" id="light"></div>
+
+<div class="gift" id="giftBox" onclick="openGift()">🎁</div>
+
+<div class="message" id="text"></div>
+
+<audio id="music">
+  <source src="lagu.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const message = "Kamu adalah hadiah terindah dalam hidupku. Terima kasih sudah hadir dan membuat hariku selalu lebih berarti.";
+
+function openGift(){
+  const gift = document.getElementById("giftBox");
+  const text = document.getElementById("text");
+  const light = document.getElementById("light");
+
+  document.getElementById("music").play();
+
+  gift.classList.add("hide");
+
+  setTimeout(()=>{
+    gift.style.display="none";
+    light.classList.add("light-on");
+    typeWriter(message, text);
+    createHearts();
+  },1000);
+}
+
+function typeWriter(text, element){
+  let i = 0;
+  function typing(){
+    if(i < text.length){
+      element.innerHTML += text.charAt(i);
+      i++;
+      setTimeout(typing, 50);
+    }
+  }
+  typing();
+}
+
+function createHearts(){
+  setInterval(()=>{
+    let heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML="❤";
+    heart.style.left=Math.random()*100+"%";
+    heart.style.animationDuration=(3+Math.random()*2)+"s";
+    heart.style.fontSize=(15+Math.random()*15)+"px";
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+      heart.remove();
+    },5000);
+
+  },300);
+}
+</script>
+
+</body>
+</html>

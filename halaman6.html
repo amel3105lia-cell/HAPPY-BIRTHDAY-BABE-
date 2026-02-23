@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kenangan Kita 💖</title>
+
+<style>
+body{
+    margin:0;
+    padding:0;
+    font-family:'Comic Sans MS', cursive, sans-serif;
+    background: linear-gradient(135deg,#ff9acb,#ffd6ec,#ffe6f4);
+    overflow:hidden;
+    text-align:center;
+    color:white;
+}
+
+/* container utama */
+.container{
+    position:relative;
+    z-index:2;
+    padding:30px 20px;
+}
+
+/* judul goyang lucu */
+h1{
+    font-size:30px;
+    animation: wiggle 2s infinite;
+}
+
+@keyframes wiggle{
+    0%{transform:rotate(0deg);}
+    25%{transform:rotate(1deg);}
+    50%{transform:rotate(0deg);}
+    75%{transform:rotate(-1deg);}
+    100%{transform:rotate(0deg);}
+}
+
+.subtitle{
+    font-size:15px;
+    margin-bottom:15px;
+    opacity:0.9;
+}
+
+/* frame video aesthetic */
+.video-frame{
+    display:inline-block;
+    padding:10px;
+    background:white;
+    border-radius:25px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+
+video{
+    width:85vw;
+    max-width:420px;
+    border-radius:20px;
+}
+
+/* tombol lucu */
+.btn{
+    display:inline-block;
+    margin-top:20px;
+    padding:12px 25px;
+    background:#fff;
+    color:#ff4fa3;
+    border-radius:30px;
+    text-decoration:none;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.btn:hover{
+    background:#ff4fa3;
+    color:white;
+    transform:scale(1.1);
+}
+
+/* emoji jatuh */
+.fall{
+    position:fixed;
+    top:-20px;
+    animation:drop linear infinite;
+}
+
+@keyframes drop{
+    to{
+        transform:translateY(110vh);
+    }
+}
+
+/* sticker lucu melayang */
+.sticker{
+    position:fixed;
+    font-size:25px;
+    animation:float 5s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%{transform:translateY(0px);}
+    50%{transform:translateY(-15px);}
+    100%{transform:translateY(0px);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Video Kenangan 1 💕🐻</h1>
+    <p class="subtitle">Aku gak tau kenapa kita bisa selucu ini 🤣 tapi aku suka banget 💖</p>
+
+    <div class="video-frame">
+        <video controls autoplay loop>
+            <source src="1.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <br>
+    <a href="halaman7.html" class="btn">💌</a>
+</div>
+
+<script>
+
+// emoji jatuh random
+const emojis = ["💖","💕","✨","🥰","😘","🐻","🌸","💘"];
+
+for(let i=0;i<25;i++){
+    let el=document.createElement("div");
+    el.className="fall";
+    el.innerHTML=emojis[Math.floor(Math.random()*emojis.length)];
+    el.style.left=Math.random()*100+"vw";
+    el.style.animationDuration=(4+Math.random()*6)+"s";
+    el.style.fontSize=(15+Math.random()*20)+"px";
+    document.body.appendChild(el);
+}
+
+// sticker pojok lucu
+const stickers=["🐻","💑","🌹","🍭"];
+stickers.forEach((s,i)=>{
+    let st=document.createElement("div");
+    st.className="sticker";
+    st.innerHTML=s;
+    st.style.top=(10 + i*20)+"%";
+    st.style.left=(i%2===0 ? "5%" : "85%");
+    document.body.appendChild(st);
+});
+
+</script>
+
+</body>
+</html>
