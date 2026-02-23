@@ -158,11 +158,40 @@ h1{
     box-shadow:0 12px 30px rgba(214,51,132,0.6);
     transform:scale(1.05);
 }
+
+ .music-player{
+    position:fixed;
+    top:15px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:9999;
+}
+
+#musicBtn{
+    padding:10px 25px;
+    border-radius:30px;
+    border:none;
+    background:linear-gradient(45deg,#ff6f91,#ff8fab,#ffc2d1);
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow:0 5px 15px rgba(214,51,132,0.4);
+    transition:0.3s;
+}
+
+#musicBtn:hover{
+    transform:scale(1.05);
+}   
 </style>
 </head>
 
 <body>
 
+<!-- TOMBOL PLAY MUSIK -->
+<div class="music-player">
+    <button id="musicBtn">▶ Putar Musik</button>
+</div>
+    
 <h1>Photo 💕</h1>
 <h2>klik fotonya satu - satu ya!</h2>
 
@@ -381,5 +410,25 @@ function toggle(element){
 }
 </script>
 
+<!-- MUSIK -->
+<audio id="bgMusic" loop>
+    <source src="happy-birthday.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const music = document.getElementById("bgMusic");
+const btn = document.getElementById("musicBtn");
+
+btn.addEventListener("click", function(){
+    if(music.paused){
+        music.play();
+        btn.innerHTML = "⏸ Pause Musik";
+    }else{
+        music.pause();
+        btn.innerHTML = "▶ Putar Musik";
+    }
+});
+</script>
+    
 </body>
 </html>
